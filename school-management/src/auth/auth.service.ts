@@ -45,9 +45,18 @@ export class AuthService {
 
         const user = await this.userService.createUser(username, password, fullName)
 
+        
+
         if(user != null){
             console.log('user created!')
+
+           return {
+                message: 'User created successfully',
+                username: user.username,
+            };
         }
+        
+    
     }
 
 }
