@@ -1,18 +1,30 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Long } from 'typeorm/driver/mongodb/bson.typings.js';
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('users')
 export class User {
 
-  @PrimaryGeneratedColumn()
-  id: Long;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column({ unique: true })
-  username: string;
+    @Column({ unique: true })
+    username: string;
 
-  @Column()
-  password: string;
+    @Column()
+    password: string;
 
-  @Column()
-  fullName: string;
+    @Column()
+    fullName: string;
+
+    @Column({
+        default: 'STUDENT',
+    })
+    role: string;
+
+    @CreateDateColumn()
+    createdAt: Date;
 }
